@@ -19,7 +19,7 @@ public class LibraryService {
 
     public void toLend(BookModel book) {
         if (book.isAvailable()) {
-            System.out.println("SUCESSFUL!");
+            System.out.println("SUCCESSFUL!");
             book.setAvailable(false);
         } else {
             System.out.println("This book is unavailable!");
@@ -28,7 +28,7 @@ public class LibraryService {
 
     public void toReturn(BookModel book) {
         if (!(book.isAvailable())) {
-            System.out.println("SUCESSFUL!");
+            System.out.println("SUCCESSFUL!");
             book.setAvailable(true);
         } else {
             System.out.println("You don't have this book!");
