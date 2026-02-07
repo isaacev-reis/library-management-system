@@ -11,8 +11,4 @@ public class LibraryRepository {
     public Map<Long, BookModel> getLibrary() {
         return library;
     }
-
-    public void setLibrary(Map<Long, BookModel> library) {
-        this.library = library;
-    }
 }
