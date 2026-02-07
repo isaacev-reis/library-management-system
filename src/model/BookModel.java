@@ -7,6 +7,14 @@ public class BookModel {
     private int year;
     private boolean available;
 
+    public BookModel(Long id, String name, String author, int year) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.year = year;
+        this.available = true;
+    }
+
     public Long getId() {
         return id;
     }
