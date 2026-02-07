@@ -28,4 +28,8 @@ public class LibraryView {
     public void erro(String message) {
         System.err.println(message);
     }
+
+    public void exitProgram() {
+        System.out.println("closing program");
+    }
 }

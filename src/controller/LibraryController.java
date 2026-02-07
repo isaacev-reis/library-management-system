@@ -29,6 +29,7 @@ public class LibraryController {
                     case 5 -> listByYear();
                     case 6 -> lendBook();
                     case 7 -> returnBook();
+                    case 8 -> view.exitProgram();
                     default -> view.erro("INVALID OPTION");
                 }
             } catch (RuntimeException e) {
