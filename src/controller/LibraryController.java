@@ -1,7 +1,5 @@
 package controller;
 
-import model.BookModel;
-import repository.LibraryRepository;
 import service.LibraryService;
 import view.LibraryView;
 
@@ -29,9 +27,9 @@ public class LibraryController {
                     case 3 -> listAvailables();
                     case 4 -> listByAuthor();
                     case 5 -> listByYear();
-                    case 6 -> toLend();
-                    case 7 -> toReturn();
-                    default -> view.erro();
+                    case 6 -> lendBook();
+                    case 7 -> returnBook();
+                    default -> view.erro("INVALID OPTION");
                 }
             } catch (RuntimeException e) {
                 view.erro(e.getMessage());
@@ -44,13 +42,13 @@ public class LibraryController {
         Long id = scanner.nextLong();
         scanner.nextLine();
 
-        view.message("Nome:");
+        view.message("Name:");
         String name = scanner.nextLine();
 
-        view.message("Autor:");
+        view.message("Author:");
         String author = scanner.nextLine();
 
-        view.message("Ano:");
+        view.message("Year:");
         int year = scanner.nextInt();
         scanner.nextLine();
 
@@ -58,17 +56,17 @@ public class LibraryController {
     }
 
     private void listAllBooks() {
-        view.message("Lista de livros: ");
+        view.message("Book list: ");
         service.listAllBooks().forEach(x -> view.showBook(x));
     }
 
     private void listAvailables() {
-        view.message("Livros disponíveis: ");
-        service.listAvailables().forEach(x -> view.showBook(x));
+        view.message("Available books: ");
+        service.listAvailable().forEach(x -> view.showBook(x));
     }
 
     private void listByAuthor() {
-        view.message("Autor: ");
+        view.message("Author: ");
         String autor = scanner.nextLine();
         service.listByAuthor(autor).forEach(x -> view.showBook(x));
     }
@@ -77,17 +75,17 @@ public class LibraryController {
         service.listByYear().forEach(x -> view.showBook(x));
     }
 
-    private void toLend() {
-        view.message("Digite o id do livro que deseja pegar: ");
+    private void lendBook() {
+        view.message("Enter the ID of the book you want to borrow: ");
         Long id = scanner.nextLong();
         scanner.nextLine();
-        service.toLend(id);
+        service.lendBook(id);
     }
 
-    private void toReturn() {
-        view.message("Digite o id do livro que deseja devolver: ");
+    private void returnBook() {
+        view.message("Enter the ID of the book you want to return: ");
         Long id = scanner.nextLong();
         scanner.nextLine();
-        service.toReturn(id);
+        service.returnBook(id);
     }
 }

@@ -2,12 +2,8 @@ package service;
 
 import model.BookModel;
 import repository.LibraryRepository;
-
-import java.security.Provider;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.SortedMap;
 
 public class LibraryService {
     LibraryRepository repository = new LibraryRepository();
@@ -21,14 +17,14 @@ public class LibraryService {
         repository.getLibrary().remove(key_id);
     }
 
-    public void toLend(Long id) {
+    public void lendBook(Long id) {
         BookModel book = repository.getLibrary().get(id);
         if (book.isAvailable()) {
             book.setAvailable(false);
         }
     }
 
-    public void toReturn(Long id) {
+    public void returnBook(Long id) {
         BookModel book = repository.getLibrary().get(id);
         if (!(book.isAvailable())) {
             book.setAvailable(true);
@@ -44,7 +40,7 @@ public class LibraryService {
                 .filter(x -> x.getAuthor().equals(author)).toList();
     }
 
-    public List<BookModel> listAvailables() {
+    public List<BookModel> listAvailable() {
         return repository.getLibrary().values().stream()
                 .filter(x -> x.isAvailable()).toList();
     }
